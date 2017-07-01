@@ -1,11 +1,26 @@
 <div class="inner cover">
   <h1 class="cover-heading">Is It Going To Rain Today?</h1>
   <p class="lead">This app uses the Dark Sky API to get the weather.</p>
-  <p class="lead">
-    <input type="text" placeholder="enter your city or zipcode" size="50" class="form-control" />
-  </p>
-  <p class="lead">
-    <input type="submit" class="btn btn-primary" />
-  </p>
+  <%= form_tag(home_post_path, class: "form") do %>
+      <p class="lead">
+      <div class="form-group">
+        <input type="text" name="longitude" placeholder="enter your longitude" size="10" class="form-control" value="<%= params[:longitude] %>"/>
+        <input type="text" name="latitude" placeholder="enter your latitude" size="10" class="form-control" value="<%= params[:latitude] %>" />
+        <%= link_to "Lookup longitude and latitude", "http://www.latlong.net/", target: "_blank" %>
+      </div>
+      </p>
+      <p class="lead">
+        <input type="submit" class="btn btn-primary"/>
+        <input type="reset" class="btn btn-normal"/>
+      </p>
+  <% end %>
+</div>
+
+<div>
+  <% if @forecast %>
+      <p class="lead">
+        <%= @forecast %>
+      </p>
+  <% end %>
 </div>
 

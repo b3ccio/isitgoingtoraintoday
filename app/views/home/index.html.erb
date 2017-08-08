@@ -1,26 +1,50 @@
-<div class="inner cover">
-  <h1 class="cover-heading">Is It Going To Rain Today?</h1>
-  <p class="lead">This app uses the Dark Sky API to get the weather.</p>
-  <%= form_tag(home_post_path, class: "form") do %>
-      <p class="lead">
-      <div class="form-group">
-        <input type="text" name="longitude" placeholder="enter your longitude" size="10" class="form-control" value="<%= params[:longitude] %>"/>
-        <input type="text" name="latitude" placeholder="enter your latitude" size="10" class="form-control" value="<%= params[:latitude] %>" />
-        <%= link_to "Lookup longitude and latitude", "http://www.latlong.net/", target: "_blank" %>
-      </div>
-      </p>
-      <p class="lead">
-        <input type="submit" class="btn btn-primary" value="Check the Weather" />
-        <button type="reset" value="Reset" class="btn btn-normal">Reset</button>
-      </p>
-  <% end %>
+<div class="video-background">
+    <div class="video-foreground">
+      <iframe src="https://www.youtube.com/embed/4nM7mU5EI00?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=4nM7mU5EI00" frameborder="0" allowfullscreen></iframe>
+    </div>
 </div>
 
-<div>
-  <% if @forecast %>
-      <p class="lead">
-        <%= @forecast %>
-      </p>
-  <% end %>
-</div>
+
+    
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">
+         <div class="jumbotron">
+            <h1 class="cover-heading">Is It Going To Rain Today?</h1>
+            <p class="lead">This app uses the Dark Sky API to get the weather.</p>
+            <%= form_tag(home_post_path, class: "form") do %>
+                <p class="lead">
+                <div class="form-group">
+                  <input type="text" value="39.290385" name="latitude" placeholder="enter your latitude" size="10" class="form-control" value="<%= params[:latitude] %>" />
+                  <input type="text" value="-76.612189" name="longitude" placeholder="enter your longitude" size="10" class="form-control" value="<%= params[:longitude] %>"/>
+                  <%= link_to "Lookup latitude and longitude", "http://www.latlong.net/", target: "_blank" %>
+                </div>
+                </p>
+                <p class="lead">
+                  <input type="submit" class="btn btn-primary" value="Check the Weather" />
+                  <button type="reset" value="Reset" class="btn btn-normal">Reset</button>
+                </p>
+            <% end %>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-10">
+          <% if @forecast %>
+            <div class="jumbotron">
+              <h2>Currently</h2>
+              <p class="lead">
+                <% @forecast.currently.each do |result| %>
+                  <% if result[0].include?("time") %>
+                    <p class="white"><%= Time.at(result[1]) %>
+                  <% else %>
+                    <p class="white"><%= result[0].underscore.humanize.titleize %>: <%= result[1].humanize.titleize rescue result[1] %></p>
+                  <% end %>
+                <% end %>
+              </p>
+              </div>
+          <% end %>
+        </div>
+        </div>
+  </div>
 

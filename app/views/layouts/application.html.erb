@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Isitgoingtoraintoday</title>
+  <title>Is it going to rain today?</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%#= javascript_pack_tag 'is_it_going_to_rain_today' %>
 </head>
 
 <body>
@@ -16,11 +17,13 @@
         <div class="inner">
           <h3 class="masthead-brand"></h3>
           <nav class="nav nav-masthead">
-            <!--<a class="nav-link" href="#">Home</a>-->
+            &nbsp;
           </nav>
         </div>
       </div>
-      <%= yield %>
+      <div id="core-content">
+        <%= yield %>
+      </div>
     </div>
   </div>
 </div>

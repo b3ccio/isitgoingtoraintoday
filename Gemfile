@@ -35,11 +35,14 @@ gem 'jbuilder', '~> 2.5'
 
 # forecast.io API wrapper in Ruby.
 gem 'forecast_io'
-
+gem 'hashie'
 # bootstrap 4
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 # bootstrap 4 needs jquery
 gem 'jquery-rails'
+
+gem 'webpacker', '~> 2.0'
+gem 'forest_liana'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,6 +50,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '3.6.0'
 end
 
 group :development do
